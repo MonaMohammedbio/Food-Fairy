@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Donors</title>
+    <link rel="stylesheet" href="E:\plp Academy content\Database module\week 8\Database project\style.css"">
+    <script defer src="E:\plp Academy content\Database module\week 8\Database project\food-fairy\js\donors.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Manage Donors</h1>
+    </header>
+    <div class="container">
+        <h2>Add New Donor</h2>
+        <form id="donorForm">
+            <input type="text" id="donorName" placeholder="Donor Name" required>
+            <input type="text" id="donorContact" placeholder="Contact Information" required>
+            <button type="submit">Add Donor</button>
+        </form>
+
+        <div class="table-container">
+            <h2>Donor List</h2>
+            <table id="donorTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

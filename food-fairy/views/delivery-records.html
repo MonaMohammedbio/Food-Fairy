@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="E:\plp Academy content\Database module\week 8\Database project\style.css">
+    <title>Delivery Records</title>
+</head>
+<body>
+<header>
+    <h1>The Food Fairy</h1>
+    <nav>
+        <a href="beneficiaries.html">Beneficiaries</a>
+        <a href="distribution-centers.html">Distribution Centers</a>
+        <a href="food-types.html">Food Types</a>
+        <a href="delivery-records.html">Delivery Records</a>
+    </nav>
+</header>
+<div class="container">
+    <h1>Delivery Records</h1>
+    <form id="deliveryRecordForm">
+        <input type="text" id="date" placeholder="Delivery Date (YYYY-MM-DD)" required>
+        <input type="number" id="donor_id" placeholder="Donor ID" required>
+        <input type="number" id="beneficiary_id" placeholder="Beneficiary ID" required>
+        <input type="number" id="distribution_center_id" placeholder="Distribution Center ID" required>
+        <button type="submit">Add Delivery Record</button>
+    </form>
+    <table id="deliveryRecordTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Donor ID</th>
+                <th>Beneficiary ID</th>
+                <th>Distribution Center ID</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<script src="E:\plp Academy content\Database module\week 8\Database project\food-fairy\js\delivery-records.js"></script>
+
+</body>
+</html>

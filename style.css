@@ -1,0 +1,179 @@
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #35424a;
+}
+
+/* Navigation Styles */
+nav ul {
+    display: flex; /* Use flexbox to layout items in a row */
+    justify-content: flex-start; /* Align items to the left */
+    flex-wrap: wrap; /* Allow wrapping to next line if necessary */
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+}
+
+nav li {
+    margin: 0 10px; /* Adjust horizontal margin for spacing */
+}
+
+a {
+    text-decoration: none;
+    color: #35424a;
+    border: 1px solid #35424a;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    display: inline-block; /* Ensure links are treated as blocks */
+}
+
+a:hover {
+    background: #35424a;
+    color: white;
+}
+
+form {
+    margin: 20px 0;
+}
+
+input {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 22px);
+}
+
+button {
+    padding: 10px;
+    background: #35424a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #2c3e50;
+}
+
+#donor-message {
+    margin-top: 10px;
+    color: green;
+}
+
+/* Table Styles */
+table {
+    width: 100%; /* Full width of the container */
+    border-collapse: collapse; /* Prevent double borders */
+    margin-top: 20px; /* Space above the table */
+}
+
+th, td {
+    padding: 10px; /* Padding within cells */
+    border: 1px solid #ccc; /* Border to separate columns */
+    text-align: left; /* Align text to the left */
+}
+
+th {
+    background-color: #35424a; /* Header background */
+    color: white; /* Header text color */
+}
+
+tbody tr:hover {
+    background-color: #f9f9f9; /* Highlight row on hover */
+}
+
+/* Table styling */
+#food-listings-table {
+    width: 100%;
+    border-collapse: collapse; /* Combine borders to avoid double borders */
+    margin-top: 20px; /* Add some space above the table */
+}
+
+#food-listings-table th,
+#food-listings-table td {
+    border: 1px solid #dddddd; /* Light gray border for table cells */
+    text-align: left; /* Align text to the left */
+    padding: 8px; /* Space inside cells */
+}
+
+#food-listings-table th {
+    background-color: #f2f2f2; /* Light gray background for headers */
+}
+
+.listing-message h2 {
+    margin: 20px 0; /* Space above and below the current listings title */
+}
+
+/* Optional: Add hover effect for table rows */
+#food-listings-table tr:hover {
+    background-color: #f5f5f5; /* Light background on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.5em; /* Slightly smaller heading */
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+
+    a {
+        padding: 8px; /* Smaller padding for links */
+    }
+
+    input,
+    button {
+        width: 100%; /* Full width for input and button */
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.2em; /* Even smaller heading on small devices */
+    }
+
+    li {
+        margin: 5px 0; /* Less margin for list items */
+    }
+
+    a {
+        font-size: 0.9em; /* Slightly smaller text for links */
+    }
+}

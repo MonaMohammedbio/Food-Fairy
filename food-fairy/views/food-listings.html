@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="E:/plp Academy content/Database module/week 8/Database project/style.css">
+    <title>Food Listings - The Food Fairy</title>
+</head>
+<body>
+    <header>
+        <h1>The Food Fairy</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="food-listings.html">Food Listings</a></li>
+                <li><a href="donor-registration.html">Register as Donor</a></li>
+                <li><a href="beneficiary.html">Beneficiary</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Add Food Listing</h2>
+        <form id="food-listing-form">
+            <input type="text" id="food-name" placeholder="Food Name" required>
+            <input type="text" id="food-description" placeholder="Description" required>
+            <input type="number" id="food-quantity" placeholder="Quantity" required>
+            <button type="submit">Add Listing</button>
+        </form>
+        <div id="listing-message"></div>
+    </div>
+
+    <div class="listing-message">
+        <h2>Current Food Listings</h2>
+        <table id="food-listings-Table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Food Name</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="food-listings-body"></tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('food-listing-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('food-name').value;
+            const description = document.getElementById('food-description').value;
+            const quantity = document.getElementById('food-quantity').value;
+
+            fetch('http://localhost:3000/food-listings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, description, quantity })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('listing-message').textContent = `Listing Added: ${data.name}`;
+                document.getElementById('food-listing-form').reset();
+                loadListings(); // Call function to refresh the listings
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('listing-message').textContent = 'Error adding listing.';
+            });
+        });
+
+        function loadListings() {
+            fetch('http://localhost:3000/food-listings', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data); // Check data received from server
+                const listingsBody = document.getElementById('food-listings-body');
+                listingsBody.innerHTML = ''; // Clear existing rows
+
+                // Add a new row for each item in the data
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+
+                    row.innerHTML = `
+                        <td>${item.id}</td>
+                        <td>${item.name}</td>
+                        <td>${item.description}</td>
+                        <td>${item.quantity}</td>
+                        <td><button onclick="deleteListing(${item.id})">Delete</button></td>
+                    `;
+
+                    listingsBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching listings:', error);
+            });
+        }
+
+        function deleteListing(id) {
+    fetch(`http://localhost:3000/food-listings/${id}`, {
+        method: 'DELETE'
+    })
+    .then(response => {
+        if (!response.ok) throw new Error(`Error deleting listing: ${response.statusText}`);
+        loadListings(); // Refresh listings after deletion
+    })
+    .catch(error => {
+        console.error('Error deleting listing:', error);
+        alert('Failed to delete listing');
+    });
+}
+        // Load listings when the page loads
+        document.addEventListener('DOMContentLoaded', loadListings);
+    </script>
+</body>
+</html>
